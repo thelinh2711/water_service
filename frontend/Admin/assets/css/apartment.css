@@ -1,0 +1,103 @@
+/* apartment.css - dùng chung phong cách với dashboard */
+
+.main {
+    flex-grow: 1;
+    padding: 30px 40px;
+  }
+  
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .topbar h1 {
+    font-size: 20px;
+  }
+  
+  .topbar input[type="search"] {
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    width: 240px;
+  }
+  
+  /* Danh sách căn hộ */
+  .apartments {
+    background-color: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .filters input[type="search"],
+  .filters select {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  thead tr {
+    background-color: #f4f6fa;
+  }
+  
+  tbody tr:hover {
+    background-color: #f9f9ff;
+  }
+  
+  /* Trạng thái hiển thị */
+  .status {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: white;
+    display: inline-block;
+  }
+  
+  .status.active {
+    background-color: #28c76f;
+  }
+  
+  .status.inactive {
+    background-color: #ea5455;
+  }
+  
+  /* Nút xoá */
+  .delete-btn {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .delete-btn:hover {
+    color: #c0392b;
+  }
+  

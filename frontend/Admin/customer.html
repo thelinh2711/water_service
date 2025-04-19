@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/customer.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="logo">WaterSystem<span class="version">v1.0</span></div>
+      <nav>
+        <ul class="menu">
+          <li class="active">
+            <i class="fa-solid fa-users"></i>
+            Khách hàng
+          </li>
+          <li>
+            <i class="fa-solid fa-building"></i>
+            Căn hộ
+          </li>
+          <li>
+            <i class="fa-solid fa-faucet"></i>
+            Dịch vụ nước
+          </li>
+          <li>
+            <i class="fa-solid fa-chart-column"></i>
+            Thống kê
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="upgrade-box">
+        <p>Nâng cấp lên PRO để sử dụng đầy đủ tính năng!</p>
+        <button>Get Pro Now!</button>
+      </div>
+      <div class="user-info">
+        <img src="assets/img/avatar.jpg" alt="Admin">
+        <div>
+          <strong>Admin</strong><br>
+          <small>Quản trị viên</small>
+        </div>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <h1>Hello Admin <span>👋</span></h1>
+        <input type="search" placeholder="Tìm kiếm...">
+      </header>
+      <section class="customers">
+        <div class="section-header">
+          <h2>Danh sách khách hàng</h2>
+          <div class="filters">
+            <button class="add-btn">
+              <i class="fa-solid fa-plus"></i> Thêm mới
+            </button>
+            <!-- Modal thêm khách hàng -->
+            <div id="addCustomerModal" class="modal">
+              <div class="modal-content">
+                <span class="close" id="closeModalBtn">&times;</span>
+                <h2>Thêm khách hàng mới</h2>
+                <form id="addCustomerForm">
+                  <label for="fullName">Họ tên *</label>
+                  <input type="text" id="fullName" name="fullName" required>
+
+                  <label for="phone">Số điện thoại</label>
+                  <input type="text" id="phone" name="phone">
+
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email">
+
+                  <label for="username">Tên đăng nhập *</label>
+                  <input type="text" id="username" name="username" required>
+
+                  <label for="password">Mật khẩu *</label>
+                  <input type="password" id="password" name="password" required>
+
+                  <button type="submit" class="btn submit-btn">Thêm mới</button>
+                  <button type="button" class="btn cancel-btn" id="cancelBtn">Hủy</button>
+                </form>
+              </div>
+            </div>
+            <input type="search" placeholder="Tìm kiếm">
+            <select>
+              <option>Mới nhất</option>
+              <option>Cũ nhất</option>
+            </select>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+                <th>Họ tên</th>
+                <th>Số điện thoại</th>
+                <th>Email</th>
+                <th>Tên đăng nhập</th>
+                <th>Trạng thái</th>
+                <th>Ngày tạo</th>
+              </tr>
+          </thead>
+          <tbody id="customerTableBody">
+            <!-- Dữ liệu render từ JS -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="assets/js/customer.js"></script>
+</body>
+</html>

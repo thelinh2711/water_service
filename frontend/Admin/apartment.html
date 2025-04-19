@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apartment Management</title>
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/apartment.css">
+</head>
+<body>
+  <div class="dashboard">
+    <aside class="sidebar">
+      <div class="logo">WaterSystem<span class="version">v1.0</span></div>
+      <nav>
+        <ul class="menu">
+          <li>
+            <i class="fa-solid fa-users"></i>
+            Khách hàng
+          </li>
+          <li class="active">
+            <i class="fa-solid fa-building"></i>
+            Căn hộ
+          </li>
+          <li>
+            <i class="fa-solid fa-faucet"></i>
+            Dịch vụ nước
+          </li>
+          <li>
+            <i class="fa-solid fa-chart-column"></i>
+            Thống kê
+          </li>
+        </ul>
+      </nav>
+      <div class="upgrade-box">
+        <p>Nâng cấp lên PRO để sử dụng đầy đủ tính năng!</p>
+        <button>Get Pro Now!</button>
+      </div>
+      <div class="user-info">
+        <img src="assets/img/avatar.jpg" alt="Admin">
+        <div>
+          <strong>Admin</strong><br>
+          <small>Quản trị viên</small>
+        </div>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <h1>Chào mừng <span>👋</span></h1>
+        <input type="search" placeholder="Tìm kiếm...">
+      </header>
+      <section class="apartments">
+        <div class="section-header">
+          <h2>Danh sách căn hộ</h2>
+          <div class="filters">
+            <input type="search" placeholder="Tìm kiếm">
+            <select>
+              <option>Mới nhất</option>
+              <option>Cũ nhất</option>
+            </select>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Địa chỉ</th>
+              <th>Dịch vụ nước</th>
+              <th>Tên khách hàng</th>
+              <th>Số điện thoại</th>
+            </tr>
+          </thead>
+          <tbody id="apartmentTableBody">
+            <!-- Dữ liệu render bằng JS -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="assets/js/apartment.js"></script>
+</body>
+</html>
