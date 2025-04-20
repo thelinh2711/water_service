@@ -1,39 +1,35 @@
-import { fetchApartments, fetchContracts, fetchServices, deleteApartment } from './api.js';
+import { fetchApartments, fetchContracts, deleteApartment } from './api.js';
 
 async function loadApartments() {
   const tbody = document.getElementById("apartmentTableBody");
 
   try {
-    const [apartments, contracts, services] = await Promise.all([
+    // Gọi API để lấy danh sách căn hộ và hợp đồng
+    const [apartments, contracts] = await Promise.all([
       fetchApartments(),
-      fetchContracts(),
-      fetchServices()
+      fetchContracts()
     ]);
 
-    // Tạo Map dịch vụ theo ID
-    const serviceMap = {};
-    services.forEach(s => {
-      serviceMap[s.id] = s.name;
-    });
-
-    // Tạo Map hợp đồng theo apartmentId
+    // Map hợp đồng theo apartmentId
     const contractMap = {};
     contracts.forEach(ct => {
-      contractMap[ct.apartmentId] = ct;
+      contractMap[ct.apartment?.id] = ct;
     });
 
     tbody.innerHTML = "";
 
     apartments.forEach(ap => {
       const contract = contractMap[ap.id];
-      const serviceName = contract ? serviceMap[contract.serviceTypeId] : "Không có";
+      const serviceName = contract?.serviceType?.name || "Không có";
+      const customerName = ap.customer?.fullName || "-";
+      const customerPhone = ap.customer?.phone || "-";
 
       const row = document.createElement("tr");
       row.innerHTML = `
         <td>${ap.address || '-'}</td>
         <td>${serviceName}</td>
-        <td>${ap.customer?.fullName || '-'}</td>
-        <td>${ap.customer?.phone || '-'}</td>
+        <td>${customerName}</td>
+        <td>${customerPhone}</td>
         <td>
           <button class="delete-btn" data-id="${ap.id}" title="Xoá căn hộ">
             <i class="fa-solid fa-trash-can"></i>
@@ -43,7 +39,7 @@ async function loadApartments() {
       tbody.appendChild(row);
     });
 
-    // Xử lý sự kiện xóa
+    // Gán sự kiện xóa
     document.querySelectorAll(".delete-btn").forEach(btn => {
       btn.addEventListener("click", async () => {
         const id = btn.getAttribute("data-id");
