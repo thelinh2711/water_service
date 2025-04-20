@@ -1,5 +1,6 @@
 package com.example.watersystem.service;
 
+import com.example.watersystem.dto.LoginResponse;
 import com.example.watersystem.model.Customer;
 import com.example.watersystem.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,17 @@ public class CustomerService {
 
     private final CustomerRepository repository;
     private final PasswordEncoder passwordEncoder;
+
+    public LoginResponse login(String username, String rawPassword) {
+        Customer customer = repository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Tài khoản không tồn tại"));
+
+        if (!passwordEncoder.matches(rawPassword, customer.getPassword())) {
+            throw new RuntimeException("Sai mật khẩu");
+        }
+
+        return new LoginResponse("fake-token", customer.getFullName());
+    }
 
     public List<Customer> getAll() {
         return repository.findAll();

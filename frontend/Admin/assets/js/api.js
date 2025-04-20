@@ -45,9 +45,17 @@ export async function deleteData(endpoint) {
 /** ==================== API cụ thể ==================== */
 
 // Đăng nhập admin
-export function loginAdmin(data) {
-    return postData('/admin-users/login', data);
+export async function loginAdmin(data) {
+    const response = await postData('/admin-users/login', data);
+
+    if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(errorText);
+    }
+
+    return await response.json();
 }
+
 
 // Lấy danh sách khách hàng
 export function fetchCustomers() {

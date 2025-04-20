@@ -1,8 +1,11 @@
 package com.example.watersystem.controller;
 
+import com.example.watersystem.dto.LoginRequest;
+import com.example.watersystem.dto.LoginResponse;
 import com.example.watersystem.model.Customer;
 import com.example.watersystem.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +18,17 @@ import java.util.List;
 public class CustomerController {
 
     private final CustomerService service;
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
+        try {
+            LoginResponse response = service.login(request.getUsername(), request.getPassword());
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+        }
+    }
+
 
     @GetMapping
     public List<Customer> getAll() {
