@@ -50,12 +50,11 @@ export async function loginAdmin(data) {
 
     if (!response.ok) {
         const errorText = await response.text();
-        throw new Error(errorText);
+        throw new Error(errorText); // ⛔️ đã throw lỗi rồi
     }
 
-    return await response.json();
+    return await response.json(); // ✅ trả JSON khi thành công
 }
-
 
 // Lấy danh sách khách hàng
 export function fetchCustomers() {

@@ -8,15 +8,14 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const errorMessage = document.getElementById('errorMessage');
 
     try {
-        const response = await loginAdmin({ username, password });
+        const data = await loginAdmin({ username, password }); // ✅ nếu không throw -> thành công
 
-        if (response.ok) {
-            window.location.href = './customer.html';
-        } else {
-            errorMessage.textContent = 'Tên đăng nhập hoặc mật khẩu không đúng.';
-        }
+        // ✅ Ví dụ lưu tên người dùng
+        localStorage.setItem('customerName', data.fullName);
+        // ✅ Chuyển trang
+        window.location.href = './customer.html';
     } catch (error) {
-        console.error('Lỗi khi đăng nhập:', error);
-        errorMessage.textContent = 'Không thể kết nối đến máy chủ.';
+        console.error('Lỗi khi đăng nhập:', error.message);
+        errorMessage.textContent = 'Tên đăng nhập hoặc mật khẩu không đúng.';
     }
 });
